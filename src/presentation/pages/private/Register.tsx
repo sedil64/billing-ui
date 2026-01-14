@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Register({ onRegister }: { onRegister: (u: string, e: string, p: string) => Promise<void> }) {
+export default function Register({
+  onRegister,
+}: {
+  onRegister: (u: string, e: string, p: string) => Promise<void>;
+}) {
   const nav = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -40,6 +44,8 @@ export default function Register({ onRegister }: { onRegister: (u: string, e: st
 
         <form onSubmit={onSubmit} className="mt-4 grid gap-3">
           <input
+            name="username"
+            autoComplete="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="username"
@@ -47,6 +53,9 @@ export default function Register({ onRegister }: { onRegister: (u: string, e: st
           />
 
           <input
+            name="email"
+            type="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="email"
@@ -54,10 +63,12 @@ export default function Register({ onRegister }: { onRegister: (u: string, e: st
           />
 
           <input
+            name="password"
+            type="password"
+            autoComplete="new-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="password"
-            type="password"
             className="w-full rounded-md border border-slate-800 bg-slate-950 px-3 py-2 text-slate-200 outline-none focus:border-sky-500"
           />
 
@@ -71,7 +82,9 @@ export default function Register({ onRegister }: { onRegister: (u: string, e: st
 
         <div className="mt-4 text-xs text-slate-400">
           ¿Ya tienes cuenta?{" "}
-          <Link to="/login" className="text-sky-400 hover:text-sky-300">Login</Link>
+          <Link to="/login" className="text-sky-400 hover:text-sky-300">
+            Login
+          </Link>
         </div>
       </div>
     </div>
